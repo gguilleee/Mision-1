@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tres en raya</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="game">
+    <h1>Tres en raya</h1>
+
+    <p id="status" class="status" aria-live="polite">Turno de <span id="turn-marker">X</span></p>
+
+    <div id="board" class="board"></div>
+
+    <button id="reset-btn" class="reset-btn">Reiniciar partida</button>
+
+    <div class="scoreboard">
+      <div class="score">
+        <span class="score-label">X</span>
+        <span id="score-x" class="score-value">0</span>
+      </div>
+      <div class="score">
+        <span class="score-label">O</span>
+        <span id="score-o" class="score-value">0</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

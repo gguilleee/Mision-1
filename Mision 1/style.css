@@ -1,0 +1,152 @@
+:root {
+  --bg: #f4f1e8;
+  --ink: #232a2e;
+  --line: #232a2e;
+  --x-color: #1f6f78;
+  --o-color: #c1502e;
+  --panel: #ffffff;
+  --muted: #6b6459;
+}
+
+body.dark-mode {
+  --bg: #14181b;
+  --ink: #ece7dc;
+  --line: #ece7dc;
+  --x-color: #4fc3c9;
+  --o-color: #e08659;
+  --panel: #1e2427;
+  --muted: #9a9284;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Georgia', 'Iowan Old Style', serif;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.game {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.status {
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  min-height: 1.2em;
+}
+
+#turn-marker {
+  font-weight: bold;
+  color: var(--ink);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(3, 90px);
+  gap: 6px;
+  background: var(--line);
+  padding: 6px;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.cell {
+  background: var(--panel);
+  border: none;
+  font-family: 'Courier New', monospace;
+  font-size: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink);
+  transition: background 0.15s ease;
+}
+
+.cell:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--panel) 85%, var(--ink) 15%);
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.cell.mark-x {
+  color: var(--x-color);
+}
+
+.cell.mark-o {
+  color: var(--o-color);
+}
+
+.cell.winning {
+  animation: pulse 0.5s ease-in-out 2;
+}
+
+@keyframes pulse {
+  0%, 100% { background: var(--panel); }
+  50% { background: color-mix(in srgb, var(--panel) 60%, var(--ink) 10%); }
+}
+
+.reset-btn {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.4rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.reset-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  font-family: 'Courier New', monospace;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.score-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.score-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
